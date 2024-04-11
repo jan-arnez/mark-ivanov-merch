@@ -4,9 +4,10 @@ import Button from '../global/Button';
 const AchievementsCard = ({
   year = new Date().getFullYear(),
   slug,
+  ...rest
 }: Pick<Achievement, 'year' | 'slug'>) => {
   return (
-    <div className="min-h-max w-full h-full bg-stone-950 relative">
+    <div {...rest} className="min-h-max w-full h-full bg-stone-950 relative">
       <div className="absolute w-full h-full z-10 flex flex-col items-center justify-center">
         <div className="lg:text-7xl sm:text-5xl text-4xl font-fira-sans font-bold text-white text-center">
           SEZONA
