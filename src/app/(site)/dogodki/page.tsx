@@ -1,13 +1,11 @@
-import Event from '@/types/Event';
 import Link from 'next/link';
-import { getEvents } from '../../../../sanity/sanity-utils';
-import EventCard from '@/components/global/EventCard';
-
+import EventCard from '@/src/components/ui/EventCard';
+import { getEvents } from '@/sanity/sanity-utils';
+import type Event from '@/src/types/Event';
 type Events = Event[] | [];
 
 const Dogodki = async () => {
   const events: Events = await getEvents();
-
   return (
     <div className="container pt-28 min-h-screen space-y-8 pb-8">
       <div className="text-center text-5xl text-stone-900 font-fira-sans font-bold">

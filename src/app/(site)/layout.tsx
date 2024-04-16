@@ -1,15 +1,13 @@
 import type { Metadata } from 'next';
-import { Fira_Sans, Open_Sans } from 'next/font/google';
-import Navigation from '@/components/global/Navigation';
-import Footer from '@/components/global/Footer';
+import { Fira_Sans } from 'next/font/google';
 import './globals.css';
+import Navigation from '@/src/components/layout/Navigation';
+import Footer from '@/src/components/layout/Footer';
 
-const open_sans = Open_Sans({ subsets: ['latin'] });
 const fira_sans = Fira_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '900'],
   style: 'italic',
-  variable: '--fira-sans',
 });
 
 export const metadata: Metadata = {
@@ -24,11 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${open_sans.className} ${fira_sans.variable}`}
-        suppressHydrationWarning
-      >
+    <html lang="sl">
+      <body className={fira_sans.className} suppressHydrationWarning>
         <Navigation />
         {children}
         <Footer />

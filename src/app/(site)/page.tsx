@@ -1,18 +1,17 @@
-import EventsSection from '@/components/home-sections/EventsSection';
-import HeroSection from '@/components/home-sections/HeroSection';
-import PostsSection from '@/components/home-sections/PostsSection';
-import ShopSection from '@/components/home-sections/ShopSection';
-import TeamSection from '@/components/home-sections/TeamSection';
-import AchievementsSection from '@/components/home-sections/AchievementsSection';
+import HeroSection from '@/src/components/home/Hero/HeroSection';
 import { getLatestEvents } from '../../../sanity/sanity-utils';
+import EventsSection from '@/src/components/home/Dogodki/EventsSection';
+import MerchSection from '@/src/components/home/Merch/MerchSection';
+import AchievementsSection from '@/src/components/home/Dosezki/AchievementsSection';
+import PostsSection from '@/src/components/home/Objave/PostsSection';
+import TeamSection from '@/src/components/home/Ekipa/TeamSection';
 
 export default async function Home() {
-  const events = getLatestEvents();
   return (
     <>
       <HeroSection />
-      <EventsSection eventsPromise={events} />
-      <ShopSection />
+      <EventsSection />
+      <MerchSection />
       <AchievementsSection />
       <TeamSection />
       <PostsSection />

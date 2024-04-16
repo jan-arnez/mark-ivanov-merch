@@ -1,23 +1,23 @@
-import { PortableText } from '@portabletext/react';
-import { getSingleEvent } from '../../../../../sanity/sanity-utils';
-import { urlForImage } from '../../../../../sanity/lib/image';
 import Image from 'next/image';
-import { formatDate } from '@/utils/formateDate';
+import { PortableText } from '@portabletext/react';
+import { formatDate } from '@/src/utils/formateDate';
+import portableTextComponents from '@/src/utils/portableText';
+import { urlForImage } from '@/sanity/lib/image';
+import { getSingleEvent } from '@/sanity/sanity-utils';
 
-// Popravi izgled
 const Dogodek = async ({ params }: { params: { slug: string } }) => {
   const event = await getSingleEvent(params.slug);
   const createdAt = new Date(event._createdAt);
 
   return (
     <div className="pt-20 min-h-screen">
-      <div className="min-h-[300px] max-h-[500px] w-full overflow-hidden z-20 relative">
+      <div className="h-[400px] w-full overflow-hidden z-20 relative">
         <div className="absolute w-full h-full z-20">
-          <div className="container w-full h-full flex items-center relative">
-            <div className="font-bold text-6xl font-fira-sans text-white text-center w-full ">
+          <div className="container w-full h-full flex flex-col justify-center gap-4 items-center relative text-white text-center">
+            <div className="font-bold text-6xl font-fira-sans w-full">
               {event.title}
             </div>
-            <div className="absolute bottom-4 right-0 text-lg font-fira-sans text-white text-right">
+            <div className="text-lg font-fira-sans">
               <span className="font-medium"> Objavljeno: </span>
               {formatDate(createdAt)}
             </div>
@@ -30,10 +30,10 @@ const Dogodek = async ({ params }: { params: { slug: string } }) => {
           height={600}
           className="absolute w-full h-full object-cover object-center z-0 backdrop-blur-md"
         />
-        <div className="absolute w-full h-full bg-stone-950/50 z-10" />
+        <div className="absolute w-full h-full bg-gradient-to-t from-stone-950 to-stone-950/20 z-10" />
       </div>
-      <div className="container max-w-[960px] py-8">
-        <PortableText value={event.body} />
+      <div className="container max-w-[960px] py-8 portable-text">
+        <PortableText value={event.body} components={portableTextComponents} />
       </div>
     </div>
   );

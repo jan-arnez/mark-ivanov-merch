@@ -1,5 +1,5 @@
 import { PortableText } from '@portabletext/react';
-import { getSingleAchievement } from '../../../../../sanity/sanity-utils';
+import { getSingleAchievement } from '@/sanity/sanity-utils';
 
 const Dosezki = async ({ params }: { params: { slug: string } }) => {
   const achievement = await getSingleAchievement(params.slug);
