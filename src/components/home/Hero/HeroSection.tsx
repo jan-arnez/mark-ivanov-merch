@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="md:h-4/5 min-h-[600px] h-full w-full relative"
+      className="md:h-4/5 min-h-[600px] h-full w-full relative overflow-hidden"
     >
       <HeroSectionVideo />
       <Content />

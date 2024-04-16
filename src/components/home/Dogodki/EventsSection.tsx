@@ -37,7 +37,7 @@ const EventsSection = () => {
   return (
     <section
       id="dogodki"
-      className="h-max min-h-screen w-full relative py-8 flex xl:flex-row flex-col items-center justify-center space-y-8"
+      className="h-max min-h-screen w-full relative py-24 flex xl:flex-row flex-col items-center justify-center space-y-8"
     >
       <Heading title="Dogodki" number="01" />
       <div className="container flex flex-col items-center gap-8 w-full">
