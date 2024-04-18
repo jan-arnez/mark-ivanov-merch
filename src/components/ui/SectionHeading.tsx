@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 
-type HeadingType = {
+type SectionHeadingType = {
   className?: String;
   number: string;
   title: string;
   color?: 'dark' | 'light';
 };
 
-const Heading: React.FC<HeadingType> = ({
+const SectionHeading: React.FC<SectionHeadingType> = ({
   color = 'dark',
   className,
   number,
@@ -40,4 +40,4 @@ const Heading: React.FC<HeadingType> = ({
   );
 };
 
-export default Heading;
+export default SectionHeading;

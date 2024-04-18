@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Button from '@/src/components/ui/Button';
-import Heading from '@/src/components/ui/Heading';
+import SectionHeading from '@/src/components/ui/SectionHeading';
 import EventCard from '@/src/components/ui/EventCard';
 import { getLatestEvents } from '@/sanity/sanity-utils';
 import type Event from '@/src/types/Event';
@@ -24,11 +24,10 @@ const EventsSection = () => {
       try {
         const fetchedEvents = await getLatestEvents();
         setEvents(fetchedEvents);
-        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch events:', error);
-        setLoading(false);
       }
+      setLoading(false);
     };
 
     fetchEvents();
@@ -39,25 +38,13 @@ const EventsSection = () => {
       id="dogodki"
       className="h-max min-h-screen w-full relative py-24 flex xl:flex-row flex-col items-center justify-center space-y-8"
     >
-      <Heading title="Dogodki" number="01" />
+      <SectionHeading title="Dogodki" number="01" />
       <div className="container flex flex-col items-center gap-8 w-full">
         {loading ? (
-          <div className="flex justify-center items-center h-full w-full">
-            <Loader />
-          </div>
-        ) : (
+          <Loader />
+        ) : events.length > 0 ? (
           <div className="grid grid-cols-1 gap-4 w-full xl:grid-cols-2 xl:grid-rows-[auto_auto]">
-            {events.length > 0 && (
-              <Link
-                href={`/dogodki/${events[0].slug}` || '/dogodki'}
-                passHref
-                key={events[0].slug}
-                className="xl:row-span-2"
-              >
-                <EventCard event={events[0]} />
-              </Link>
-            )}
-            {events.slice(1).map((event) => (
+            {events.slice(0, 4).map((event) => (
               <Link
                 href={`/dogodki/${event.slug}` || '/dogodki'}
                 passHref
@@ -66,6 +53,10 @@ const EventsSection = () => {
                 <EventCard event={event} />
               </Link>
             ))}
+          </div>
+        ) : (
+          <div className="flex items-center justify-center w-full h-full xl:min-h-[600px] min-h-[300px] border">
+            Trenutno še ni objavljenih dogodkov.
           </div>
         )}
         <Button href="/dogodki" variant="brand-red" className="mx-auto">

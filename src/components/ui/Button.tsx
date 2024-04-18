@@ -8,11 +8,11 @@ interface ButtonProps
   variant?: Variants;
   children: React.ReactNode;
   className?: string;
-  href: string;
+  href?: string;
 }
 
 const BASE_STYLE =
-  'shifted h-12 px-6 md:px-12 min-w-max uppercase tracking-widest font-fira-sans font-bold flex items-center justify-center shadow-md text-shadow text-sm transition-colors transition-transform hover:-translate-y-1';
+  'shifted h-12 px-6 md:px-12 min-w-max uppercase tracking-widest font-fira-sans font-bold flex items-center justify-center shadow-md text-shadow text-sm transition-colors transition-transform hover:-translate-y-1 disabled:bg-stone-300 disabled:text-stone-500 disabled:hover:translate-y-0 disabled:cursor-progress';
 
 const VARIANT_CLASSES = {
   'brand-blue': 'bg-brand-blue text-white',
@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'brand-blue',
   children,
   className,
-  href,
+  href = '',
   ...props
 }) => {
   const finalClassName = classNames(
@@ -35,11 +35,19 @@ const Button: React.FC<ButtonProps> = ({
   );
 
   return (
-    <Link href={href} className="h-max w-max">
-      <button className={finalClassName} {...props}>
-        {children}
-      </button>
-    </Link>
+    <>
+      {href ? (
+        <Link href={href} className="h-max w-max">
+          <button className={finalClassName} {...props}>
+            {children}
+          </button>
+        </Link>
+      ) : (
+        <button className={finalClassName} {...props}>
+          {children}
+        </button>
+      )}
+    </>
   );
 };
 

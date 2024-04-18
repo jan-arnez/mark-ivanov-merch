@@ -18,7 +18,7 @@ export async function getEvents(): Promise<Event[]> {
 
 export async function getLatestEvents(): Promise<Event[]> {
   return client.fetch(
-    groq`*[_type == "event"] | order(_createdAt desc)[0...3] {
+    groq`*[_type == "event"] | order(_createdAt desc)[0...4] {
           title,
           _createdAt,
           "slug": slug.current,
@@ -36,6 +36,7 @@ export async function getSingleEvent(slug: string): Promise<Event> {
     mainImage,
     body
   }`;
+
   const params = { slug };
   const result = await client.fetch(query, params);
   return result[0];
@@ -71,3 +72,5 @@ export async function getTeam(): Promise<Team[]> {
     image
     }`);
 }
+
+export const dynamic = 'force-dynamic';

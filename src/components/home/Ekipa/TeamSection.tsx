@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Heading from '@/src/components/ui/Heading';
+import SectionHeading from '@/src/components/ui/SectionHeading';
 import { getTeam } from '@/sanity/sanity-utils';
 import { urlForImage } from '@/sanity/lib/image';
 import type Team from '@/src/types/Team';
@@ -41,7 +41,7 @@ const TeamSection = () => {
       className="w-full min-h-max py-24 bg-brand-blue flex xl:flex-row flex-col items-center gap-8 relative"
     >
       <div className="triangle-top -top-[1px]"></div>
-      <Heading title="Ekipa" number="04" color="light" />
+      <SectionHeading title="Ekipa" number="04" color="light" />
       <div className="container">
         <div className="sm:grid lg:grid-cols-4 sm:grid-cols-2 flex flex-wrap gap-4 items-center justify-center">
           {loading ? (

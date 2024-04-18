@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import AchievementsCard from './AchievementCard';
-import Heading from '@/src/components/ui/Heading';
+import SectionHeading from '@/src/components/ui/SectionHeading';
 import { getAchievements } from '@/sanity/sanity-utils';
 import type Achievement from '@/src/types/Achievement';
 
@@ -37,7 +37,7 @@ const AchievementsSection = () => {
       id="dosezki"
       className="h-max w-full relative py-24 flex xl:flex-row flex-col items-center space-y-8"
     >
-      <Heading title="Dosežki" number="03" />
+      <SectionHeading title="Dosežki" number="03" />
 
       {loading ? (
         <Loader />

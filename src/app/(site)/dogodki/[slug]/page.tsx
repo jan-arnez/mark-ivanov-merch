@@ -4,6 +4,8 @@ import { formatDate } from '@/src/utils/formateDate';
 import portableTextComponents from '@/src/utils/portableText';
 import { urlForImage } from '@/sanity/lib/image';
 import { getSingleEvent } from '@/sanity/sanity-utils';
+import PageHeading from '@/src/components/ui/PageHeading';
+import SocialMediaBar from '@/src/components/ui/SocialMediaBar';
 
 const Dogodek = async ({ params }: { params: { slug: string } }) => {
   const event = await getSingleEvent(params.slug);
@@ -11,12 +13,10 @@ const Dogodek = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="pt-20 min-h-screen">
-      <div className="h-[400px] w-full overflow-hidden z-20 relative">
+      <div className="md:min-h-[400px] min-h-[250px] h-max w-full overflow-hidden z-20 relative">
         <div className="absolute w-full h-full z-20">
           <div className="container w-full h-full flex flex-col justify-center gap-4 items-center relative text-white text-center">
-            <div className="font-bold text-6xl font-fira-sans w-full">
-              {event.title}
-            </div>
+            <PageHeading pageName={event.title} className="text-white" />
             <div className="text-lg font-fira-sans">
               <span className="font-medium"> Objavljeno: </span>
               {formatDate(createdAt)}
@@ -28,12 +28,17 @@ const Dogodek = async ({ params }: { params: { slug: string } }) => {
           alt={event.mainImage.alt}
           width={1920}
           height={600}
+          priority
           className="absolute w-full h-full object-cover object-center z-0 backdrop-blur-md"
         />
-        <div className="absolute w-full h-full bg-gradient-to-t from-stone-950 to-stone-950/20 z-10" />
+        <div className="absolute w-full h-full bg-gradient-to-t from-brand-blue z-10" />
       </div>
       <div className="container max-w-[960px] py-8 portable-text">
         <PortableText value={event.body} components={portableTextComponents} />
+        <div className="w-full flex flex-col items-center justify-center gap-4">
+          <SocialMediaBar />
+          <div className="font-medium">Sledi mi na družabnih omrežjih</div>
+        </div>
       </div>
     </div>
   );
