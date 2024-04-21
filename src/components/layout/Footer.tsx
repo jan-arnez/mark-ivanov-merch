@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import SocialMediaBar from '../ui/SocialMediaBar';
-import Logo from './Logo';
+import Logo from './Signature';
 
 const Footer = () => {
   return (
@@ -32,9 +32,9 @@ export default Footer;
 const FooterNav = () => {
   return (
     <div className="flex flex-col w-full items-center justify-center">
-      <Logo className="invert" />
+      <Logo className="invert pb-4" />
 
-      <ul className="text-white mx-auto w-full flex items-center justify-center gap-4 py-4">
+      <ul className="text-white mx-auto w-full hidden sm:flex items-center justify-center gap-4 py-4 ">
         <li>
           <Link href="/" className="hover:underline">
             Domov

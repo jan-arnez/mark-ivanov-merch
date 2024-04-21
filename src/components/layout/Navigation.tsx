@@ -1,11 +1,11 @@
 'use client';
 import { useCallback } from 'react';
-import Logo from './Logo';
 import Sidebar from './Sidebar';
 import {
   SidebarWrapper,
   useSidebarContext,
 } from '@/src/context/sidebarContext';
+import Signature from './Signature';
 
 const Navigation = () => {
   return (
@@ -14,7 +14,7 @@ const Navigation = () => {
       <Sidebar />
       <header className="h-20 bg-white border-b-[1px] fixed top-0 left-0 right-0 z-50">
         <div className="h-full container flex items-center justify-between gap-y-8">
-          <Logo />
+          <Signature />
           <SidebarIcon />
         </div>
       </header>
