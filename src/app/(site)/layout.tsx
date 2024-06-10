@@ -23,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sl">
+      <head>
+        <script defer data-domain="mark-ivanov-merch-olive.vercel.app" src="https://plausible.io/js/script.js"></script>
+      </head>
       <body className={fira_sans.className} suppressHydrationWarning>
         <Navigation />
         {children}
