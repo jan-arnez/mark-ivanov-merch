@@ -24,7 +24,14 @@ export default function RootLayout({
   return (
     <html lang="sl">
       <head>
-        <script defer data-domain="mark-ivanov-merch-olive.vercel.app" src="https://plausible.io/js/script.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X0HP9TS8W2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X0HP9TS8W2');
+</script>
       </head>
       <body className={fira_sans.className} suppressHydrationWarning>
         <Navigation />
